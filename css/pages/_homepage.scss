@@ -1,0 +1,337 @@
+.planets_container{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    // on crée une forme éliptique
+    transform: scaleX(5);
+}
+.planet{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    // pour annuler la forme éliptique héritée de planet_container
+    transform: scaleX(0.2);
+    // on place un cercle plus foncé en after et plus petit au centre de la planète pour l'effet d'ombre
+    &::after{
+        content: '';
+        position: absolute;
+        inset: 0px;
+        border-radius: 50%;
+    }
+}
+
+#first-planet{
+    animation: firstPlanetRender 12s infinite linear;
+}
+#first-planet::after{
+    animation: firstPlanetRenderRotater 12s infinite linear;
+}
+#second-planet{
+    animation: secondPlanetRender 12s infinite linear;
+}
+#second-planet::after{
+    animation: secondPlanetRenderRotater 12s infinite linear;
+}
+#third-planet{
+    background-color: bisque;
+    animation: thirdPlanetRender 12s infinite linear;
+}
+#third-planet::after{
+    animation: thirdPlanetRenderRotater 12s infinite linear;
+}
+// effet d'ombre sur la planète, la partie claire reste côté soleil
+@keyframes firstPlanetRender{
+    0%{
+        background: linear-gradient(-90deg, aqua 50%, rgb(11, 122, 122) 50%);
+    }
+    // on change le gradient en passant de -90 à 90deg entre 12% et 12.1% pour inverser les couleurs rapidemment
+    12%{
+        background: linear-gradient(-90deg, aqua 50%, rgb(11, 122, 122) 50%);
+    }
+    12.1%{
+        background: linear-gradient(90deg, aqua 50%, rgb(11, 122, 122) 50%);
+    }
+    62%{
+        background: linear-gradient(90deg, aqua 50%, rgb(11, 122, 122) 50%);
+    }
+    62.1%{
+        background: linear-gradient(-90deg, aqua 50%, rgb(11, 122, 122) 50%);
+    }
+    100%{
+        background: linear-gradient(-90deg, aqua 50%, rgb(11, 122, 122) 50%);
+    }
+}
+@keyframes secondPlanetRender{
+    0%{
+        background: linear-gradient(90deg, indianred 50%, rgb(95, 17, 17) 50%);
+    }
+    40%{
+        background: linear-gradient(90deg, indianred 50%, rgb(95, 17, 17) 50%);
+    }
+    40.1%{
+        background: linear-gradient(-90deg, indianred 50%, rgb(95, 17, 17) 50%);
+    }
+    90%{
+        background: linear-gradient(-90deg, indianred 50%, rgb(95, 17, 17) 50%);
+    }
+    90.1%{
+        background: linear-gradient(90deg, indianred 50%, rgb(95, 17, 17) 50%);
+    }
+    100%{
+        background: linear-gradient(90deg, indianred 50%, rgb(95, 17, 17) 50%);
+    }
+}
+@keyframes thirdPlanetRender{
+    0%{
+        background: linear-gradient(-90deg, bisque 50%, rgb(128, 94, 54) 50%);
+    }
+    // on change le gradient en passant de -90 à 90deg entre 12% et 12.1% pour inverser les couleurs rapidemment
+    49%{
+        background: linear-gradient(-90deg, bisque 50%, rgb(128, 94, 54) 50%);
+    }
+    49.1%{
+        background: linear-gradient(90deg, bisque 50%, rgb(128, 94, 54) 50%);
+    }
+    99%{
+        background: linear-gradient(90deg, bisque 50%, rgb(128, 94, 54) 50%);
+    }
+    99.1%{
+        background: linear-gradient(-90deg, bisque 50%, rgb(128, 94, 54) 50%);
+    }
+    100%{
+        background: linear-gradient(-90deg, bisque 50%, rgb(128, 94, 54) 50%);
+    }
+}
+// effet d'ombre de forme éliptique en faisant varier la taille du cercle en after !!! mettre .planet::after inset : 0px
+@keyframes firstPlanetRenderRotater{
+    0%{
+        transform: scaleX(-0.2); 
+        background-color: aqua;
+    }
+    12%{
+        transform: scaleX(-1); 
+        background-color: aqua;
+    }
+    12.1%{
+        transform: scaleX(1); 
+        background-color: aqua;
+    }
+    37%{
+        transform: scaleX(0); 
+        background-color: aqua;
+    }
+    37.1%{
+        transform: scaleX(0); 
+        background-color: rgb(11, 122, 122);
+    }
+    62%{
+        transform: scaleX(-1); 
+        background-color: rgb(11, 122, 122);
+    }
+    62.1%{
+        transform: scaleX(-1); 
+        background-color: rgb(11, 122, 122);
+    }
+    87%{
+        transform: scaleX(0); 
+        background-color: rgb(11, 122, 122);
+    }
+    87.1%{
+        transform: scaleX(0); 
+        background-color: aqua;
+    }
+    100%{
+        transform: scaleX(-0.2); 
+        background-color: aqua;
+    }
+}
+@keyframes secondPlanetRenderRotater{
+    0%{
+        transform: scaleX(-0.5); 
+        background-color: indianred;
+    }
+    15%{
+        transform: scaleX(0); 
+        background-color: indianred;
+    }
+    15.1%{
+        transform: scaleX(0); 
+        background-color: rgb(95, 17, 17);
+    }
+    40%{
+        transform: scaleX(-1); 
+        background-color: rgb(95, 17, 17);
+    }
+    40.1%{
+        transform: scaleX(1); 
+        background-color: rgb(95, 17, 17);
+    }
+    65%{
+        transform: scaleX(0); 
+        background-color: rgb(95, 17, 17);
+    }
+    65.1%{
+        transform: scaleX(0); 
+        background-color: indianred;
+    }
+    90%{
+        transform: scaleX(-1); 
+        background-color: indianred;
+    }
+    90.1%{
+        transform: scaleX(1); 
+        background-color: indianred;
+    }
+    100%{
+        transform: scaleX(-0.5); 
+        background-color: indianred;
+    }
+}
+@keyframes thirdPlanetRenderRotater{
+    0%{
+        transform: scaleX(1); 
+        background-color: rgb(128, 94, 54);
+    }
+    25%{
+        transform: scaleX(0); 
+        background-color:rgb(128, 94, 54);
+    }
+    25.1%{
+        transform: scaleX(0); 
+        background-color: bisque;
+    }
+    49%{
+        transform: scaleX(-1); 
+        background-color: bisque;
+    }
+    49.1%{
+        transform: scaleX(1); 
+        background-color: bisque;
+    }
+    75%{
+        transform: scaleX(0); 
+        background-color: bisque;
+    }
+    75.1%{
+        transform: scaleX(0); 
+        background-color: rgb(128, 94, 54);
+    }
+    100%{
+        transform: scaleX(1); 
+        background-color: rgb(128, 94, 54);
+    }
+}
+.route{
+    width: 100%;
+    height: 100%;
+    animation: rotate 12s infinite linear;
+    position : absolute;
+}
+// rotation éliptique sur l'axe z
+@keyframes rotate {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotatez(360deg);
+    }
+}
+.planet-container{
+    // on s'assure que le container à la même dimension que les planères
+    width: 60px;
+    height: 60px;
+    animation: correct 12s infinite linear;
+    position: absolute;
+}
+#second-planet-container {
+    left: 85px;
+}
+#third-planet-container{
+    left: 42.5px;
+    top : 100px;
+}
+// correction de la forme éliptique héritée de .route
+@keyframes correct {
+    0%{
+        transform: rotateZ(360deg);
+    }
+    100% {
+        transform: rotatez(0deg);
+    }
+}
+.sun{
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: yellow;
+    transform: scaleX(0.2);
+    box-shadow: 0 0 60px rgb(253, 203, 163), 0 0 98px rgb(184, 160, 26);
+}
+.planet-index{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#first-planet-index{
+    animation: hideFirstPlanet 12s infinite;
+}
+#second-planet-index{
+    animation: hideSecondPlanet 12s infinite;
+}
+#third-planet-index{
+    animation: hideThirdPlanet 12s infinite;
+}
+@keyframes hideFirstPlanet{
+    0%{
+        // pour la cacher derrière le soleil
+        z-index: 999;
+        // pour reduire la taille afin de donner l'impression de persective
+        transform : scale(0.9);
+    }
+    25%{
+        z-index: -999;
+        transform : scale(0.8);
+    }
+    50%{
+        transform : scale(0.9);
+    }
+    75%{
+        transform: scale(1.1);
+    }
+    100%{
+        z-index: 999;
+        transform : scale(0.9);
+    }
+}
+@keyframes hideSecondPlanet{
+    0%{
+        z-index: -999;
+        transform: scale(0.95);
+    }
+    50%{
+        z-index: 999;
+        transform: scale(1.1)
+    }
+    90%{
+        transform: scale(0.9);
+    }
+    100%{
+        z-index: -999;
+        transform: scale(0.95);
+    }
+}
+@keyframes hideThirdPlanet{
+    0%{
+        z-index: 999;
+        transform: scale(1.1);
+    }
+    50%{
+        z-index: -999;
+        transform: scale(0.8);
+    }
+    100%{
+        z-index: 999;
+        transform: scale(1.1);
+    }
+}
